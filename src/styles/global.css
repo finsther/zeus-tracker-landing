@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* =====================================================
+     COLOR PRIMITIVES
+     ===================================================== */
+
+  /* Ink — neutral warm-gray */
+  --color-ink-50:  #F7F6F3;
+  --color-ink-100: #EDEBE5;
+  --color-ink-200: #DCD8CE;
+  --color-ink-300: #B9B3A4;
+  --color-ink-400: #8A8476;
+  --color-ink-500: #5C574C;
+  --color-ink-600: #3A372F;
+  --color-ink-700: #25231E;
+  --color-ink-800: #171612;
+  --color-ink-900: #0F0E0B;
+  --color-ink-950: #0B0D12;
+
+  /* Lightning — primary accent (yellow) */
+  --color-lightning-50:  #FFFBEA;
+  --color-lightning-100: #FFF4C2;
+  --color-lightning-200: #FFE88A;
+  --color-lightning-300: #FFDB52;
+  --color-lightning-400: #FFD23F;
+  --color-lightning-500: #E6B800;
+  --color-lightning-600: #B38900;
+  --color-lightning-700: #7A5E00;
+
+  /* Cinema — secondary accent (red) */
+  --color-cinema-50:  #FFF1F2;
+  --color-cinema-100: #FFD9DC;
+  --color-cinema-200: #FFA9B1;
+  --color-cinema-300: #FF6B76;
+  --color-cinema-400: #E5484D;
+  --color-cinema-500: #C12B31;
+  --color-cinema-600: #8E1F23;
+
+  /* Semantic scales */
+  --color-green-400: #30A46C;
+  --color-green-500: #208F5C;
+  --color-amber-400: #F5A524;
+  --color-amber-500: #D48806;
+  --color-blue-400:  #4C8DFF;
+  --color-blue-500:  #2F6BE0;
+
+  /* =====================================================
+     SEMANTIC COLORS — dark theme (default)
+     ===================================================== */
+
+  /* Surface / background */
+  --color-background:          #0B0D12;
+  --color-background-strong:   #0F0E0B;
+  --color-background-hover:    #141620;
+  --color-background-elev1:    #14161D;
+  --color-background-elev2:    #1B1E27;
+  --color-background-inverse:  #F7F6F3;
+
+  /* Foreground / text */
+  --color-fg:          #F2EFE7;
+  --color-fg-muted:    #A7A196;
+  --color-fg-subtle:   #6E695E;
+  --color-fg-disabled: #3F3C34;
+  --color-fg-inverse:  #0F0E0B;
+
+  /* Borders */
+  --color-border:        rgba(255, 248, 220, 0.09);
+  --color-border-strong: rgba(255, 248, 220, 0.16);
+  --color-border-focus:  #FFD23F;
+
+  /* Accent — lightning yellow */
+  --color-accent:          #FFD23F;
+  --color-accent-hover:    #FFDB52;
+  --color-accent-press:    #E6B800;
+  --color-accent-contrast: #0B0D12;
+  --color-accent-soft:     rgba(255, 210, 63, 0.14);
+
+  /* Secondary — cinema red */
+  --color-secondary:       #E5484D;
+  --color-secondary-hover: #FF6B76;
+  --color-secondary-soft:  rgba(229, 72, 77, 0.14);
+
+  /* Semantic states */
+  --color-success:        #30A46C;
+  --color-success-soft:   rgba(48, 164, 108, 0.16);
+  --color-warning:        #F5A524;
+  --color-warning-soft:   rgba(245, 165, 36, 0.16);
+  --color-danger:         #E5484D;
+  --color-danger-soft:    rgba(229, 72, 77, 0.16);
+  --color-info:           #4C8DFF;
+  --color-info-soft:      rgba(76, 141, 255, 0.16);
+  --color-scrim:          rgba(0, 0, 0, 0.62);
+
+  /* =====================================================
+     TYPOGRAPHY
+     ===================================================== */
+
+  /* Font families */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Font sizes */
+  --text-1:  11px;
+  --text-2:  12px;
+  --text-3:  14px;
+  --text-4:  16px;
+  --text-5:  18px;
+  --text-6:  20px;
+  --text-7:  24px;
+  --text-8:  28px;
+  --text-9:  34px;
+  --text-10: 42px;
+  --text-11: 56px;
+  --text-12: 72px;
+
+  /* Font weights */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  /* Line heights */
+  --leading-tight: 1.12;
+  --leading-snug:  1.28;
+  --leading-body:  1.5;
+  --leading-loose: 1.7;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.02em;
+  --tracking-caps:    0.08em;
+
+  /* =====================================================
+     SPACING
+     ===================================================== */
+  --spacing-1:  4px;
+  --spacing-2:  8px;
+  --spacing-3:  12px;
+  --spacing-4:  16px;
+  --spacing-5:  20px;
+  --spacing-6:  24px;
+  --spacing-8:  32px;
+  --spacing-10: 40px;
+  --spacing-12: 56px;
+  --spacing-16: 72px;
+  --spacing-20: 96px;
+
+  /* =====================================================
+     BORDER RADIUS
+     ===================================================== */
+  --radius-1:    4px;
+  --radius-2:    8px;
+  --radius-3:    12px;
+  --radius-4:    16px;
+  --radius-5:    20px;
+  --radius-full: 9999px;
+
+  /* =====================================================
+     SHADOWS — dark theme (default)
+     ===================================================== */
+  --shadow-card:  0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-modal: 0 24px 48px rgba(0, 0, 0, 0.55);
+
+  /* =====================================================
+     Z-INDEX
+     ===================================================== */
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-drawer: 900;
+  --z-modal:  1000;
+  --z-toast:  2000;
+}
+
+/* =====================================================
+   TOKENS THAT REFERENCE OTHER CSS VARS
+   (cannot live in @theme — resolved at runtime)
+   ===================================================== */
+:root {
+  --shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-accent);
+  --color-protection-gradient: linear-gradient(
+    180deg,
+    rgba(11, 13, 18, 0)   0%,
+    rgba(11, 13, 18, 0.2) 35%,
+    rgba(11, 13, 18, 0.9) 80%,
+    rgba(11, 13, 18, 1)  100%
+  );
+}
+
+/* =====================================================
+   LIGHT THEME OVERRIDES
+   ===================================================== */
+[data-theme="light"] {
+  --color-background:         #FBFAF6;
+  --color-background-strong:  #EDEBE5;
+  --color-background-hover:   #F3F1EA;
+  --color-background-elev1:   #FFFFFF;
+  --color-background-elev2:   #FFFFFF;
+  --color-background-inverse: #0B0D12;
+
+  --color-fg:          #0F0E0B;
+  --color-fg-muted:    #5C574C;
+  --color-fg-subtle:   #8A8476;
+  --color-fg-disabled: #B9B3A4;
+  --color-fg-inverse:  #F7F6F3;
+
+  --color-border:        rgba(15, 14, 11, 0.08);
+  --color-border-strong: rgba(15, 14, 11, 0.14);
+  --color-border-focus:  #E6B800;
+
+  --color-accent:          #E6B800;
+  --color-accent-hover:    #FFD23F;
+  --color-accent-press:    #B38900;
+  --color-accent-soft:     rgba(230, 184, 0, 0.16);
+
+  --color-secondary:       #E5484D;
+  --color-secondary-hover: #C12B31;
+  --color-secondary-soft:  rgba(229, 72, 77, 0.10);
+
+  --color-success:      #208F5C;
+  --color-success-soft: rgba(32, 143, 92, 0.12);
+  --color-warning:      #D48806;
+  --color-warning-soft: rgba(212, 136, 6, 0.12);
+  --color-danger:       #C12B31;
+  --color-danger-soft:  rgba(193, 43, 49, 0.10);
+  --color-info:         #2F6BE0;
+  --color-info-soft:    rgba(47, 107, 224, 0.12);
+  --color-scrim:        rgba(15, 14, 11, 0.50);
+
+  --shadow-card:  0 1px 2px rgba(15, 14, 11, 0.04), 0 4px 12px rgba(15, 14, 11, 0.06);
+  --shadow-modal: 0 24px 48px rgba(15, 14, 11, 0.18);
+  --color-protection-gradient: linear-gradient(
+    180deg,
+    rgba(251, 250, 246, 0)   0%,
+    rgba(251, 250, 246, 0.2) 35%,
+    rgba(251, 250, 246, 0.9) 80%,
+    rgba(251, 250, 246, 1)  100%
+  );
+}
+
+/* =====================================================
+   BASE STYLES
+   ===================================================== */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
