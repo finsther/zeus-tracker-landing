@@ -1,17 +1,29 @@
 ---
+export const prerender = false;
 
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import {
+  trendingSeries,
+  bestMovies,
+  mustWatchSeries,
+  genres,
+  recentReviews,
+  faqItems,
+  categories,
+} from '@/mocks';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Clak TV — Películas y series que debes ver"
+  description="Descubre las películas y series más populares. Lleva tu historial, escribe reseñas y encuentra tu próximo favorito. El diario personal de todo lo que ves."
+>
+  {/* TODO: Hero */}
+  {/* TODO: Trending — {trendingSeries.length} series */}
+  {/* TODO: Best Movies — {bestMovies.length} películas */}
+  {/* TODO: Must Watch Series — {mustWatchSeries.length} series */}
+  {/* TODO: Genres — {genres.length} géneros */}
+  {/* TODO: Recent Reviews — {recentReviews.length} reseñas */}
+  {/* TODO: FAQ — {faqItems.length} preguntas */}
+  {/* TODO: Categories — {categories.length} categorías */}
+  {/* TODO: Info CTA */}
+</BaseLayout>

@@ -1,0 +1,142 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<nav class="nav">
+  <a class="logo" href="/" aria-label="Clak TV">
+    <Icon name="imagotipo" class="logo-imagotipo" aria-hidden="true" />
+  </a>
+
+  <div class="nav-links">
+    <a href="#">Trending</a>
+    <a href="#">Mejores 2026</a>
+    <a href="#">Géneros</a>
+    <a href="#">Reseñas</a>
+  </div>
+
+  <div class="nav-actions">
+    <button class="nav-search" aria-label="Buscar">
+      <Icon name="ri:search-line" aria-hidden="true" />
+      <span>Buscar</span>
+      <kbd>⌘K</kbd>
+    </button>
+
+    <a class="nav-enter" href="#">Entrar</a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(11, 13, 18, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-mark-body);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .logo-imagotipo {
+    height: 28px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-fg);
+  }
+
+  .nav-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .nav-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--color-background-elev1);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 8px;
+    color: var(--color-fg-muted);
+    font-size: 13px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+
+  .nav-search:hover {
+    border-color: var(--color-accent);
+  }
+
+  .nav-search svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .nav-search kbd {
+    padding: 1px 5px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-fg-subtle);
+  }
+
+  .nav-enter {
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .nav-enter:hover {
+    background: var(--color-accent-hover);
+  }
+
+  @media (max-width: 900px) {
+    .nav {
+      padding: 14px 20px;
+    }
+
+    .nav-links,
+    .nav-search {
+      display: none;
+    }
+  }
+</style>

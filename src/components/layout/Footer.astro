@@ -1,0 +1,122 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <Icon name="clak-simple-mark-inverted" aria-hidden="true" />
+
+      <span>© {year} CLAK TV · HECHO EN MX</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Ayuda</a>
+      <a href="mailto:hola@clak.tv">Contacto</a>
+      <a href="#">Estado</a>
+    </div>
+
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">
+        <Icon name="ri:instagram-line" aria-hidden="true" />
+      </a>
+
+      <a href="#" aria-label="Facebook">
+        <Icon name="ri:facebook-line" aria-hidden="true" />
+      </a>
+
+      <a href="#" aria-label="X">
+        <Icon name="ri:twitter-x-line" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 36px 40px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-fg-muted);
+    font-size: 12px;
+    font-family: var(--font-mono);
+  }
+
+  .footer-brand svg {
+    width: 16px;
+    height: 16px;
+    color: var(--color-mark-body);
+    flex-shrink: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-fg);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 6px;
+  }
+
+  .footer-social a {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--color-background-elev1);
+    border: 1px solid var(--color-border);
+    color: var(--color-fg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .footer-social a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .footer-social svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  @media (max-width: 900px) {
+    footer {
+      padding: 24px 20px;
+    }
+  }
+</style>
