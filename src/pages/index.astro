@@ -4,6 +4,7 @@ export const prerender = false;
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import Trending from '@/components/sections/Trending.astro';
+import BestMovies from '@/components/sections/BestMovies.astro';
 import {
   trendingSeries as trending,
   bestMovies,
@@ -21,7 +22,7 @@ import {
 >
   <Hero />
   <Trending series={trending} />
-  {/* TODO: Best Movies — {bestMovies.length} películas */}
+  <BestMovies movies={bestMovies} />
   {/* TODO: Must Watch Series — {mustWatchSeries.length} series */}
   {/* TODO: Genres — {genres.length} géneros */}
   {/* TODO: Recent Reviews — {recentReviews.length} reseñas */}

@@ -1,0 +1,96 @@
+---
+import type { Movie } from '@/types';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  movie: Movie;
+  rank?: number;
+}
+
+const { movie, rank } = Astro.props;
+---
+
+<a
+  href={`/movies/${movie.slug}`}
+  class="group block cursor-pointer snap-start"
+>
+  <div class="relative aspect-2/3 rounded-3 overflow-hidden shadow-[0_14px_34px_rgba(0,0,0,0.4)] transition-transform duration-200 group-hover:-translate-y-1">
+    <img
+      src={movie.coverImage}
+      alt={movie.title}
+      loading="lazy"
+      class="size-full object-cover"
+    />
+
+    {rank !== undefined && (
+      <span class="absolute top-2 left-2 size-6.5 rounded-[7px] bg-[rgba(11,13,18,0.8)] backdrop-blur-[10px] inline-flex items-center justify-center font-mono text-[13px] font-bold text-accent">
+        {rank}
+      </span>
+    )}
+
+    <span class="absolute top-2 right-2 inline-flex items-center gap-0.75 px-1.75 py-0.75 rounded-md bg-accent text-accent-contrast font-mono text-1 font-bold">
+      <Icon name="ri:star-fill" class="size-3" aria-hidden="true" />
+      {movie.rating.toFixed(1)}
+    </span>
+  </div>
+
+  <div class="mt-2.5">
+    <div class="title-wrap font-display text-[15px] font-semibold tracking-[-0.01em] text-fg overflow-hidden whitespace-nowrap">
+      <span class="title-track inline-block">{movie.title}</span>
+    </div>
+
+    <div class="font-mono text-1 text-fg-muted mt-0.5">
+      {movie.year} · {movie.director}
+    </div>
+  </div>
+</a>
+
+<script>
+  const wraps = document.querySelectorAll<HTMLElement>('.title-wrap');
+
+  wraps.forEach((wrap) => {
+    const track = wrap.querySelector<HTMLElement>('.title-track');
+
+    if (!track) {
+      return;
+    }
+
+    if (track.scrollWidth <= wrap.clientWidth) {
+      return;
+    }
+
+    const text = track.textContent ?? '';
+
+    track.textContent = '';
+
+    const first = document.createElement('span');
+
+    first.className = 'pr-8';
+    first.textContent = text;
+
+    const second = document.createElement('span');
+
+    second.className = 'pr-8';
+    second.setAttribute('aria-hidden', 'true');
+    second.textContent = text;
+    track.appendChild(first);
+    track.appendChild(second);
+
+    wrap.dataset.overflow = 'true';
+  });
+</script>
+
+<style>
+  .group:hover .title-wrap[data-overflow='true'] .title-track {
+    animation: marquee 8s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
