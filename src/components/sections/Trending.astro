@@ -1,0 +1,56 @@
+---
+import type { Series } from '@/types';
+import { Icon } from 'astro-icon/components';
+import SeriesCard from '@/components/ui/SeriesCard.astro';
+
+interface Props {
+  series: Series[];
+}
+
+const { series } = Astro.props;
+---
+
+<section
+  id="trending"
+  class="px-10 py-[64px] max-[900px]:px-5 max-[900px]:py-[48px]"
+>
+  <div class="max-w-320 mx-auto">
+    <div class="flex justify-between items-end gap-5 mb-7 max-[900px]:flex-col max-[900px]:items-start">
+      <div>
+        <h2 class="font-display font-semibold text-[clamp(28px,3vw,36px)] tracking-[-0.025em] leading-tight m-0 mb-1.5">
+          Trending <em class="italic text-accent font-medium">esta semana</em>
+        </h2>
+        <p class="text-3 text-fg-muted m-0 max-w-140">
+          Los títulos que más gente añadió, vio y calificó en los últimos 7 días.
+        </p>
+      </div>
+      <a
+        href="#"
+        class="inline-flex items-center gap-1 text-[13px] font-semibold text-accent whitespace-nowrap [&_svg]:size-3.5"
+      >
+        Ver todo
+        <Icon name="ri:arrow-right-line" aria-hidden="true" />
+      </a>
+    </div>
+
+    <div class="carousel grid grid-flow-col auto-cols-[180px] gap-4 overflow-x-auto pt-2 pb-2.5 [scroll-snap-type:x_mandatory]">
+      {series.map((s) => <SeriesCard series={s} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .carousel {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+  }
+
+  .carousel::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .carousel::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 3px;
+  }
+</style>
