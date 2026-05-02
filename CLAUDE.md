@@ -58,3 +58,11 @@ Hero · Trending · Best Movies · Must Watch Series · Genres · Recent Reviews
 ## Code conventions
 - All code in English: variables, functions, components, types, file names, comments
 - Exception: UX copy values (text visible to the user) must be in Spanish
+
+## Tailwind conventions
+Before writing any Tailwind CSS, read and follow the skill defined in:
+`.claude/skills/tailwind-4-docs/`
+Apply these rules to every component. If existing components violate these rules,
+refactor them when touched.
+This skill is not tracked in git. Get it from:
+https://github.com/Lombiq/Tailwind-Agent-Skills
