@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
 import {
   trendingSeries,
   bestMovies,
@@ -17,7 +18,7 @@ import {
   title="Clak TV — Películas y series que debes ver"
   description="Descubre las películas y series más populares. Lleva tu historial, escribe reseñas y encuentra tu próximo favorito. El diario personal de todo lo que ves."
 >
-  {/* TODO: Hero */}
+  <Hero />
   {/* TODO: Trending — {trendingSeries.length} series */}
   {/* TODO: Best Movies — {bestMovies.length} películas */}
   {/* TODO: Must Watch Series — {mustWatchSeries.length} series */}
