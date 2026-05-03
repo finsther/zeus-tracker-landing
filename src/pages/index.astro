@@ -8,13 +8,14 @@ import BestMovies from '@/components/sections/BestMovies.astro';
 import MustWatchSeries from '@/components/sections/MustWatchSeries.astro';
 import GenreExplorer from '@/components/sections/GenreExplorer.astro';
 import RecentReviews from '@/components/sections/RecentReviews.astro';
+import FAQ from '@/components/sections/FAQ.astro';
 import {
   trendingSeries as trending,
   bestMovies,
   mustWatchSeries,
   genres,
   recentReviews,
-  faqItems,
+  faqItems as faq,
   categories,
 } from '@/mocks';
 ---
@@ -29,7 +30,7 @@ import {
   <MustWatchSeries series={mustWatchSeries} />
   <GenreExplorer genres={genres} />
   <RecentReviews reviews={recentReviews} />
-  {/* TODO: FAQ — {faqItems.length} preguntas */}
+  <FAQ items={faq} />
   {/* TODO: Categories — {categories.length} categorías */}
   {/* TODO: Info CTA */}
 </BaseLayout>
