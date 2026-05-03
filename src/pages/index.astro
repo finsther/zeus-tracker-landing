@@ -9,6 +9,7 @@ import MustWatchSeries from '@/components/sections/MustWatchSeries.astro';
 import GenreExplorer from '@/components/sections/GenreExplorer.astro';
 import RecentReviews from '@/components/sections/RecentReviews.astro';
 import FAQ from '@/components/sections/FAQ.astro';
+import CategoryExplorer from '@/components/sections/CategoryExplorer.astro';
 import {
   trendingSeries as trending,
   bestMovies,
@@ -31,6 +32,6 @@ import {
   <GenreExplorer genres={genres} />
   <RecentReviews reviews={recentReviews} />
   <FAQ items={faq} />
-  {/* TODO: Categories — {categories.length} categorías */}
+  <CategoryExplorer categories={categories} />
   {/* TODO: Info CTA */}
 </BaseLayout>

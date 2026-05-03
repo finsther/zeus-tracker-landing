@@ -1,0 +1,55 @@
+---
+import type { Category } from '@/types';
+
+interface Props {
+  categories: Category[];
+}
+
+const { categories } = Astro.props;
+
+const groups: { type: Category['type']; label: string }[] = [
+  { type: 'year', label: 'Por año' },
+  { type: 'genre', label: 'Por género' },
+  { type: 'decade', label: 'Por década' },
+];
+
+const byType = (type: Category['type']) =>
+  categories.filter((c) => c.type === type);
+---
+
+<section
+  id="explore"
+  class="px-10 py-[64px] bg-background-elev1 border-y border-border max-[900px]:px-5 max-[900px]:py-[48px]"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-end gap-5 mb-7 max-[900px]:flex-col max-[900px]:items-start">
+      <div>
+        <h2 class="font-display font-semibold text-[clamp(28px,3vw,36px)] tracking-[-0.025em] leading-tight m-0">
+          Explora por
+          <em class="italic text-accent font-medium">año</em>
+          o
+          <em class="italic text-accent font-medium">categoría</em>
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-9 max-[900px]:grid-cols-2 max-[900px]:gap-6">
+      {groups.map((group) => (
+        <div>
+          <h4 class="font-body text-2 font-semibold tracking-caps uppercase text-fg-muted m-0 mb-3.5">
+            {group.label}
+          </h4>
+          
+          {byType(group.type).map((category) => (
+            <a
+              href={`/c/${category.slug}`}
+              class="block text-[13px] text-fg-muted py-1.25 transition-colors hover:text-accent"
+            >
+              {category.name}
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
