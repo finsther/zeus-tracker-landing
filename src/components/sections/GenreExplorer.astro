@@ -1,0 +1,33 @@
+---
+import type { Genre } from '@/types';
+import GenreCard from '@/components/ui/GenreCard.astro';
+
+interface Props {
+  genres: Genre[];
+}
+
+const { genres } = Astro.props;
+---
+
+<section
+  id="genres"
+  class="px-10 py-[64px] bg-background-elev1 border-y border-border max-[900px]:px-5 max-[900px]:py-[48px]"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-end gap-5 mb-7 max-[900px]:flex-col max-[900px]:items-start">
+      <div>
+        <h2 class="font-display font-semibold text-[clamp(28px,3vw,36px)] tracking-[-0.025em] leading-tight m-0 mb-1.5">
+          Explora por <em class="italic text-accent font-medium">género</em>
+        </h2>
+        
+        <p class="text-3 text-fg-muted m-0 max-w-140">
+          Encuentra qué ver según tu mood.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-3.5 max-[900px]:grid-cols-2">
+      {genres.map((genre) => <GenreCard genre={genre} />)}
+    </div>
+  </div>
+</section>
