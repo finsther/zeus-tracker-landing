@@ -10,6 +10,7 @@ import GenreExplorer from '@/components/sections/GenreExplorer.astro';
 import RecentReviews from '@/components/sections/RecentReviews.astro';
 import FAQ from '@/components/sections/FAQ.astro';
 import CategoryExplorer from '@/components/sections/CategoryExplorer.astro';
+import InfoCTA from '@/components/sections/InfoCTA.astro';
 import {
   trendingSeries as trending,
   bestMovies,
@@ -33,5 +34,5 @@ import {
   <RecentReviews reviews={recentReviews} />
   <FAQ items={faq} />
   <CategoryExplorer categories={categories} />
-  {/* TODO: Info CTA */}
+  <InfoCTA />
 </BaseLayout>

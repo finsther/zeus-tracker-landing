@@ -1,0 +1,35 @@
+---
+import Button from '@/components/ui/Button.astro';
+---
+
+<section class="cta-band relative overflow-hidden text-center px-6 py-25">
+  <div class="relative z-2 max-w-180 mx-auto">
+    <h2 class="font-display font-semibold text-[clamp(36px,5vw,56px)] tracking-[-0.03em] leading-none m-0 mb-4">
+      Crea tu <em class="italic text-accent font-medium">diario de pantalla.</em>
+    </h2>
+    
+    <p class="text-fg-muted text-4 m-0 mb-7">
+      Gratis, privado, y con todo lo que viste hasta hoy.
+    </p>
+
+    <Button href="#" variant="primary" icon="ri:arrow-right-line">
+      Crear cuenta gratis
+    </Button>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255, 210, 63, 0.12) 0%, transparent 65%),
+      var(--color-background);
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 3px);
+  }
+</style>
