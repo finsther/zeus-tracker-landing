@@ -7,6 +7,7 @@ import Trending from '@/components/sections/Trending.astro';
 import BestMovies from '@/components/sections/BestMovies.astro';
 import MustWatchSeries from '@/components/sections/MustWatchSeries.astro';
 import GenreExplorer from '@/components/sections/GenreExplorer.astro';
+import RecentReviews from '@/components/sections/RecentReviews.astro';
 import {
   trendingSeries as trending,
   bestMovies,
@@ -27,7 +28,7 @@ import {
   <BestMovies movies={bestMovies} />
   <MustWatchSeries series={mustWatchSeries} />
   <GenreExplorer genres={genres} />
-  {/* TODO: Recent Reviews — {recentReviews.length} reseñas */}
+  <RecentReviews reviews={recentReviews} />
   {/* TODO: FAQ — {faqItems.length} preguntas */}
   {/* TODO: Categories — {categories.length} categorías */}
   {/* TODO: Info CTA */}

@@ -1,0 +1,76 @@
+---
+import type { Review } from '@/types';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  review: Review;
+}
+
+const { review } = Astro.props;
+
+const initial = review.user.name.charAt(0).toUpperCase();
+const filledStars = Math.max(1, Math.round(review.rating / 2));
+const typeLabel = review.contentType === 'series' ? 'serie' : 'película';
+
+function relativeTime(iso: string): string {
+  const then = new Date(iso).getTime();
+  const diff = Date.now() - then;
+  const day = 86_400_000;
+  const days = Math.floor(diff / day);
+
+  if (days < 1) {
+    const hours = Math.max(1, Math.floor(diff / 3_600_000));
+    return `hace ${hours}h`;
+  }
+
+  if (days < 7) {
+    return `hace ${days} día${days === 1 ? '' : 's'}`;
+  }
+
+  const weeks = Math.floor(days / 7);
+
+  if (weeks < 4) {
+    return `hace ${weeks} semana${weeks === 1 ? '' : 's'}`;
+  }
+
+  const months = Math.floor(days / 30);
+
+  return `hace ${months} mes${months === 1 ? '' : 'es'}`;
+}
+
+const created = relativeTime(review.createdAt);
+---
+
+<article class="bg-background-elev1 border border-border rounded-[14px] p-6 grid grid-cols-[80px_1fr] gap-4.5 items-start max-[900px]:grid-cols-[60px_1fr] max-[900px]:gap-3.5">
+  <div class="aspect-2/3 rounded-2 bg-background-elev2 flex items-center justify-center text-center font-display font-semibold text-1 text-white/85 px-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+    {review.contentTitle}
+  </div>
+
+  <div>
+    <div class="flex items-center justify-between gap-2.5 mb-2">
+      <span class="font-display font-semibold text-4 tracking-[-0.01em]">
+        {review.contentTitle} · {typeLabel}
+      </span>
+
+      <span class="flex gap-0.5 text-accent shrink-0 [&_svg]:size-3.25">
+        {Array.from({ length: filledStars }).map(() => (
+          <Icon name="ri:star-fill" aria-hidden="true" />
+        ))}
+      </span>
+    </div>
+
+    <p class="font-display italic text-3 leading-body text-fg m-0 mb-2.5">
+      "{review.content}"
+    </p>
+
+    <div class="flex items-center gap-2 text-2 text-fg-muted">
+      <span class="size-5.5 rounded-full bg-[linear-gradient(135deg,#FFD23F,#E5484D)] flex items-center justify-center font-display font-bold text-1 text-accent-contrast">
+        {initial}
+      </span>
+
+      <span>{review.user.name}</span>
+      <span aria-hidden="true">·</span>
+      <span>{created}</span>
+    </div>
+  </div>
+</article>

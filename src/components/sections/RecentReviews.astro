@@ -1,0 +1,41 @@
+---
+import type { Review } from '@/types';
+import { Icon } from 'astro-icon/components';
+import ReviewCard from '@/components/ui/ReviewCard.astro';
+
+interface Props {
+  reviews: Review[];
+}
+
+const { reviews } = Astro.props;
+---
+
+<section
+  id="reviews"
+  class="px-10 py-[64px] max-[900px]:px-5 max-[900px]:py-[48px]"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-end gap-5 mb-7 max-[900px]:flex-col max-[900px]:items-start">
+      <div>
+        <h2 class="font-display font-semibold text-[clamp(28px,3vw,36px)] tracking-[-0.025em] leading-tight m-0 mb-1.5">
+          Reseñas <em class="italic text-accent font-medium">recientes</em>
+        </h2>
+
+        <p class="text-3 text-fg-muted m-0 max-w-140">
+          Lo que dice la comunidad después de verlo.
+        </p>
+      </div>
+      <a
+        href="#"
+        class="inline-flex items-center gap-1 text-[13px] font-semibold text-accent whitespace-nowrap [&_svg]:size-3.5"
+      >
+        Más reseñas
+        <Icon name="ri:arrow-right-line" aria-hidden="true" />
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4.5 max-[900px]:grid-cols-1">
+      {reviews.map((review) => <ReviewCard review={review} />)}
+    </div>
+  </div>
+</section>
