@@ -11,15 +11,59 @@ import RecentReviews from '@/components/sections/RecentReviews.astro';
 import FAQ from '@/components/sections/FAQ.astro';
 import CategoryExplorer from '@/components/sections/CategoryExplorer.astro';
 import InfoCTA from '@/components/sections/InfoCTA.astro';
-import {
-  trendingSeries as trending,
-  bestMovies,
-  mustWatchSeries,
-  genres,
-  recentReviews,
-  faqItems as faq,
-  categories,
-} from '@/mocks';
+
+import { fetchFromAPI } from '@/lib/api';
+import type {
+  Series,
+  Movie,
+  Genre,
+  Review,
+  FAQItem,
+  Category,
+} from '@/types';
+
+interface HomeData {
+  trending: Series[];
+  bestMovies: Movie[];
+  mustWatchSeries: Series[];
+  genres: Genre[];
+  recentReviews: Review[];
+  faq: FAQItem[];
+  categories: Category[];
+}
+
+let trending: Series[];
+let bestMovies: Movie[];
+let mustWatchSeries: Series[];
+let genres: Genre[];
+let recentReviews: Review[];
+let faq: FAQItem[];
+let categories: Category[];
+
+try {
+  const data = await fetchFromAPI<HomeData>('/api/v1/public/home');
+  ({
+    trending,
+    bestMovies,
+    mustWatchSeries,
+    genres,
+    recentReviews,
+    faq,
+    categories,
+  } = data);
+} catch (error) {
+  console.error('[index] BFF fetch failed, using mocks:', error);
+
+  const mocks = await import('@/mocks');
+
+  trending = mocks.trendingSeries;
+  bestMovies = mocks.bestMovies;
+  mustWatchSeries = mocks.mustWatchSeries;
+  genres = mocks.genres;
+  recentReviews = mocks.recentReviews;
+  faq = mocks.faqItems;
+  categories = mocks.categories;
+}
 ---
 
 <BaseLayout
