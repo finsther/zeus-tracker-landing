@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import fs from 'node:fs';
 import path from 'node:path';
+import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { Plugin } from 'vite';
 
 const MIME: Record<string, string> = {
   '.jpg': 'image/jpeg',
@@ -14,20 +16,17 @@ const MIME: Record<string, string> = {
   '.svg': 'image/svg+xml',
 };
 
-function dummyImages() {
+function dummyImages(): Plugin {
   return {
     name: 'serve-dummy-images',
-    configureServer(server: { middlewares: { use: Function } }) {
-      server.middlewares.use('/images/dummy', (req: { url?: string }, res: { setHeader: Function; end: Function }, next: Function) => {
+    configureServer(server) {
+      server.middlewares.use('/images/dummy', (req: IncomingMessage, res: ServerResponse, next: () => void) => {
         const baseDir = path.join(process.cwd(), 'src/mocks/images');
         const filePath = path.join(baseDir, decodeURIComponent(req.url ?? '/'));
 
-        if (!filePath.startsWith(baseDir)) {
-          return next();
-        }
-
-        if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
-          return next();
+        if (path.relative(baseDir, filePath).startsWith('..') || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+          next();
+          return;
         }
 
         res.setHeader('Content-Type', MIME[path.extname(filePath).toLowerCase()] ?? 'application/octet-stream');

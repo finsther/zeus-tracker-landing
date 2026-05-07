@@ -39,7 +39,7 @@ const byType = (type: Category['type']) =>
           <h4 class="font-body text-2 font-semibold tracking-caps uppercase text-fg-muted m-0 mb-3.5">
             {group.label}
           </h4>
-          
+
           {byType(group.type).map((category) => (
             <a
               href={`/c/${category.slug}`}

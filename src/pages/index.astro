@@ -1,6 +1,4 @@
 ---
-export const prerender = false;
-
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import Trending from '@/components/sections/Trending.astro';
@@ -21,6 +19,8 @@ import type {
   FAQItem,
   Category,
 } from '@/types';
+
+export const prerender = false;
 
 interface HomeData {
   trending: Series[];

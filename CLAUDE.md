@@ -5,12 +5,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-bun dev      # dev server at localhost:4321
-bun build    # production build
-bun preview  # preview production build
+bun dev        # dev server at localhost:4321
+bun build      # production build
+bun preview    # preview production build
+bun lint       # ESLint check
+bun lint:fix   # ESLint auto-fix
 ```
 
-No linter or test runner configured yet.
+No test runner configured yet.
 
 ## Stack
 
