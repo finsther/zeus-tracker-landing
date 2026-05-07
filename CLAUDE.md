@@ -17,6 +17,7 @@ No linter or test runner configured yet.
 - **Astro 6** with `output: server` (SSR via Vercel adapter, ISR 30min)
 - **Tailwind CSS v4** via `@tailwindcss/vite` (no config file — tokens live in `global.css @theme`)
 - **astro-icon** for all icons — Remix Icons (`ri:*`) and local SVGs from `src/icons/`
+- **@astrojs/sitemap** auto-generates sitemap on build
 - **Vercel** deployment target
 
 ## Path alias
@@ -25,11 +26,11 @@ No linter or test runner configured yet.
 
 ## Architecture
 
-`BaseLayout.astro` wraps every page: injects `global.css`, `Navbar`, `Footer`, and standard meta tags. Accepts `title` and `description` props.
+`BaseLayout.astro` wraps every page: injects `global.css`, `Navbar`, `Footer`, and standard meta tags. Accepts `title`, `description`, and optional `ogImage` props.
 
 `src/lib/api.ts` — `fetchFromAPI<T>(path)` reads `PUBLIC_API_URL` from env. All API calls go through it.
 
-`src/mocks/` — static mock arrays used in `index.astro` while real API is not wired. When connecting real data, replace mock imports with `fetchFromAPI` calls server-side in the frontmatter.
+`index.astro` fetches all home data in one call to `/api/v1/public/home` (returns `HomeData` with all section arrays). On fetch failure, falls back to `src/mocks/` static arrays. New sections follow this same try/catch pattern in the frontmatter.
 
 `src/types/` — one interface per entity (`Series`, `Movie`, `Genre`, `Review`, `FAQItem`, `Category`). All exported from `src/types/index.ts`.
 
@@ -51,9 +52,9 @@ Key token groups:
 - Material Symbols (`material-symbols:*`) also installed but used for UI system icons only — it has no brand/social icons
 - Always import `Icon` from `'astro-icon/components'`
 
-## index.astro sections (all pending)
+## index.astro sections
 
-Hero · Trending · Best Movies · Must Watch Series · Genres · Recent Reviews · FAQ · Categories · Info CTA
+All built: Hero · Trending · BestMovies · MustWatchSeries · GenreExplorer · RecentReviews · FAQ · CategoryExplorer · InfoCTA
 
 ## Code conventions
 - All code in English: variables, functions, components, types, file names, comments

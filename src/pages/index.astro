@@ -42,6 +42,7 @@ let categories: Category[];
 
 try {
   const data = await fetchFromAPI<HomeData>('/api/v1/public/home');
+
   ({
     trending,
     bestMovies,
